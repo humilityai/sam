@@ -1,4 +1,4 @@
-package slices
+package sam
 
 import (
 	"sort"

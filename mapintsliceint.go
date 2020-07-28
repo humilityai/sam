@@ -1,4 +1,4 @@
-package slices
+package sam
 
 // MapIntSliceInt ...
 type MapIntSliceInt map[int]Int
