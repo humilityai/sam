@@ -1,13 +1,14 @@
 package sam
 
-// MapIntSliceInt ...
-type MapIntSliceInt map[int]Int
+// MapIntSliceInt uses integer values as a key
+// and a slice of integers as values.
+type MapIntSliceInt map[int]SliceInt
 
 // Add ...
 func (m MapIntSliceInt) Add(i int) {
 	_, ok := m[i]
 	if !ok {
-		m[i] = make(Int, 0)
+		m[i] = make(SliceInt, 0)
 	}
 }
 
@@ -17,7 +18,7 @@ func (m MapIntSliceInt) Add(i int) {
 func (m MapIntSliceInt) MustAppend(i, value int) {
 	s, ok := m[i]
 	if !ok {
-		m[i] = Int{value}
+		m[i] = SliceInt{value}
 	}
 
 	s = append(s, value)
@@ -28,7 +29,7 @@ func (m MapIntSliceInt) MustAppend(i, value int) {
 func (m MapIntSliceInt) AddWithLength(i, length int) {
 	_, ok := m[i]
 	if !ok {
-		m[i] = make(Int, length, length)
+		m[i] = make(SliceInt, length, length)
 	}
 }
 

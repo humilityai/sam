@@ -2,10 +2,12 @@ package sam
 
 import "math"
 
-// MapIntFloat64 ...
+// MapIntFloat64 uses integers as keys
+// and float64s as values.
 type MapIntFloat64 map[int]float64
 
-// Min ...
+// Min will return the integer key with the smallest
+// float64 value.
 func (m MapIntFloat64) Min() (index int) {
 	min := math.MaxFloat64
 	for i, v := range m {
@@ -18,7 +20,8 @@ func (m MapIntFloat64) Min() (index int) {
 	return
 }
 
-// Max ...
+// Max will return the integer key with the
+// largest float64 value.
 func (m MapIntFloat64) Max() (index int) {
 	max := float64(math.MinInt64)
 	for i, v := range m {
@@ -31,7 +34,8 @@ func (m MapIntFloat64) Max() (index int) {
 	return
 }
 
-// MaxN ...
+// MaxN will return a MapIntFloat64 containing the N largest
+// key/value pairs by value.
 func (m MapIntFloat64) MaxN(n int) MapIntFloat64 {
 	maxN := make(MapIntFloat64)
 

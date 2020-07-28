@@ -2,11 +2,12 @@ package sam
 
 import "math"
 
-// Int ...
-type Int []int
+// SliceInt is a slice/array of integers
+type SliceInt []int
 
-// Product ...
-func (s Int) Product() int {
+// Product will return the total product of
+// all values in the slice.
+func (s SliceInt) Product() int {
 	var product int
 	for i, v := range s {
 		if i == 0 {
@@ -19,8 +20,9 @@ func (s Int) Product() int {
 	return product
 }
 
-// Sum ...
-func (s Int) Sum() int {
+// Sum will return the total sum of
+// all values in the slice.
+func (s SliceInt) Sum() int {
 	var sum int
 
 	for i, v := range s {
@@ -34,8 +36,9 @@ func (s Int) Sum() int {
 	return sum
 }
 
-// Min ...
-func (s Int) Min() (index, value int) {
+// Min will return the index and the value of
+// the smallest value in the slice.
+func (s SliceInt) Min() (index, value int) {
 	value = math.MaxInt64
 	for i, v := range s {
 		if v < value {
@@ -47,8 +50,9 @@ func (s Int) Min() (index, value int) {
 	return
 }
 
-// Max ...
-func (s Int) Max() (index int) {
+// Max will return the index of the largest
+// value in the slice.
+func (s SliceInt) Max() (index int) {
 	max := math.MinInt64
 	for i, v := range s {
 		if v > max {
@@ -60,8 +64,9 @@ func (s Int) Max() (index int) {
 	return
 }
 
-// Contains ...
-func (s Int) Contains(i int) bool {
+// Contains checks if an integer value
+// already exists in the slice.
+func (s SliceInt) Contains(i int) bool {
 	for _, v := range s {
 		if v == i {
 			return true
@@ -71,8 +76,9 @@ func (s Int) Contains(i int) bool {
 	return false
 }
 
-// IncrementPosition ...
-func (s Int) IncrementPosition(index int) {
+// IncrementPosition will add 1 to the integer value
+// found at the supplied index argument.
+func (s SliceInt) IncrementPosition(index int) {
 	if index > len(s)-1 || index < 0 {
 		return
 	}

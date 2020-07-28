@@ -6,10 +6,12 @@ import (
 	"unicode"
 )
 
-// SliceString ...
+// SliceString is a slice/array of strings.
 type SliceString []string
 
-// Equal ...
+// Equal will check if the string slice is equal to
+// the supplied object argument and return a boolean.
+// It can check for equality against any (arbitrary) argument.
 func (s1 SliceString) Equal(input interface{}) bool {
 	s2, ok := input.(SliceString)
 	if !ok {
@@ -29,7 +31,8 @@ func (s1 SliceString) Equal(input interface{}) bool {
 	return true
 }
 
-// Contains ...
+// Contains will check if the slice contains the supplied
+// string argument.
 func (s1 SliceString) Contains(s string) bool {
 	for _, v := range s1 {
 		if v == s {
@@ -47,19 +50,16 @@ func (s1 SliceString) ToLower() {
 	}
 }
 
-// String ...
+// String will convert the string slice into a single string,
+// with each string being delimited by the supplied delimiter.
 func (s1 SliceString) String(delimeter string) string {
 	return strings.Join(s1, delimeter)
 }
 
-// SortedString ...
-func (s1 SliceString) SortedString() string {
-	sort.Sort(s1)
-	return strings.Join(s1, "")
-}
-
-// SortedStringWithDelimeter ...
-func (s1 SliceString) SortedStringWithDelimeter(delimeter string) string {
+// SortedString will lexicographically sort the strings
+// in the slice and return them as a single string delimited
+// by the supplied delimieter argument.
+func (s1 SliceString) SortedString(delimeter string) string {
 	sort.Sort(s1)
 	return strings.Join(s1, delimeter)
 }

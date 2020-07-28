@@ -2,10 +2,12 @@ package sam
 
 import "math"
 
-// MapFloat64Int ...
+// MapFloat64Int uses float64s as keys
+// and integers as values.
 type MapFloat64Int map[float64]int
 
-// Max ...
+// Max will return the key with the largest
+// integer value.
 func (m MapFloat64Int) Max() float64 {
 	max := math.MinInt64
 	var returnValue float64
@@ -19,7 +21,8 @@ func (m MapFloat64Int) Max() float64 {
 	return returnValue
 }
 
-// Increment ...
+// Increment will add 1 to the integer value
+// of the provided float64 key.
 func (m MapFloat64Int) Increment(f float64) {
 	v, ok := m[f]
 	if !ok {
@@ -31,7 +34,8 @@ func (m MapFloat64Int) Increment(f float64) {
 	m[f] = v
 }
 
-// AverageCount ...
+// AverageCount will iterate over the map and
+// return the average integer value.
 func (m MapFloat64Int) AverageCount() int {
 	var avg int
 
