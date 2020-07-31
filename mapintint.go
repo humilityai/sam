@@ -71,11 +71,6 @@ func (m MapIntInt) MinValue() (key int, value int) {
 
 // Contains will check if the map contains a key.
 func (m MapIntInt) Contains(key int) bool {
-	for k := range m {
-		if k == key {
-			return true
-		}
-	}
-
-	return false
+	_, ok := m[key]
+	return ok
 }
