@@ -1,3 +1,17 @@
+// Copyright 2020 Hummility AI Incorporated, All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package sam
 
 import (
@@ -5,7 +19,7 @@ import (
 	"math/rand"
 	"sort"
 
-	. "github.com/humilityai/util"
+	hMath "github.com/humilityai/math"
 )
 
 // SliceFloat64 is the primary data structure for holding numerical
@@ -89,7 +103,7 @@ func (s SliceFloat64) AverageDeviation() float64 {
 func (s SliceFloat64) IsNum() SliceFloat64 {
 	newS := make(SliceFloat64, len(s), len(s))
 	for i, v := range s {
-		newS[i] = IsNum(v)
+		newS[i] = hMath.IsNum(v)
 	}
 
 	return newS
@@ -408,7 +422,6 @@ func (s SliceFloat64) StrictlyNegative() bool {
 func (s SliceFloat64) RescaleValues() (min, max float64) {
 	min = s.Min()
 	max = s.Max()
-	// avg := stat.Mean(values, nil)
 
 	scaledValues := make(SliceFloat64, len(s), len(s))
 	for index, value := range s {
@@ -737,12 +750,8 @@ func (s SliceFloat64) SampleAmount(amount int) SliceFloat64 {
 func (s SliceFloat64) Sequences(length, stride int) [][]float64 {
 	sequences := make([][]float64, 0)
 
-	start := length + stride
-	for i := range s {
-		if i+length < len(s)-1 && i >= start {
-			sequences = append(sequences, s[i:i+length])
-			start = i + stride
-		}
+	for i := 0; i+length < len(s)-1; i += stride {
+		sequences = append(sequences, s[i:i+length])
 	}
 
 	return sequences
