@@ -30,8 +30,9 @@ var (
 // Current primary use is for external packages.
 type Slice interface {
 	Equal(Slice) bool
-	At(int) interface{}
+	Get(int) interface{}
 	Len() int
+	Set(int, interface{})
 	Type() string
 	Subslice(start, end int) Slice
 }

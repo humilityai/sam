@@ -51,10 +51,19 @@ func (s SliceFloat64) Equal(element Slice) bool {
 	return true
 }
 
-// At is just a function version of what can be done
+// Get is just a function version of what can be done
 // more easily with `[index]`.
-func (s SliceFloat64) At(index int) interface{} {
+func (s SliceFloat64) Get(index int) interface{} {
 	return s[index]
+}
+
+// Set is just a function version of what can be done
+// more easily with `[index]`.
+func (s SliceFloat64) Set(index int, input interface{}) {
+	v, ok := input.(float64)
+	if ok {
+		s[index] = v
+	}
 }
 
 // Subslice is just to satisfy the slice interface

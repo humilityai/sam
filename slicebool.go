@@ -44,10 +44,19 @@ func (s SliceBool) Len() int {
 	return len(s)
 }
 
-// At is just a function version of what can be done
+// Get is just a function version of what can be done
 // more easily with `[index]`.
-func (s SliceBool) At(index int) interface{} {
+func (s SliceBool) Get(index int) interface{} {
 	return s[index]
+}
+
+// Set is just a function version of what can be done
+// more easily with `[index]`.
+func (s SliceBool) Set(index int, input interface{}) {
+	v, ok := input.(bool)
+	if ok {
+		s[index] = v
+	}
 }
 
 // Subslice is just to satisfy the slice interface.
