@@ -19,7 +19,7 @@ type SliceBool []bool
 
 // Equal will check if SliceBool is equal to provided
 // object.
-func (s SliceBool) Equal(element interface{}) bool {
+func (s SliceBool) Equal(element Slice) bool {
 	input, ok := element.(SliceBool)
 	if !ok {
 		return false
@@ -38,10 +38,27 @@ func (s SliceBool) Equal(element interface{}) bool {
 	return true
 }
 
+// Len will return the length
+// of the boolean slice as an integer.
+func (s SliceBool) Len() int {
+	return len(s)
+}
+
 // At is just a function version of what can be done
 // more easily with `[index]`.
-func (s SliceBool) At(index int) bool {
+func (s SliceBool) At(index int) interface{} {
 	return s[index]
+}
+
+// Subslice is just to satisfy the slice interface.
+func (s SliceBool) Subslice(start, end int) Slice {
+	return SliceBool(s[start:end])
+}
+
+// Type will return the type name of the values
+// stored
+func (s SliceBool) Type() string {
+	return BoolType
 }
 
 // FalseIndices will return the list of all indices

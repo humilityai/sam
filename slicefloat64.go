@@ -15,6 +15,7 @@
 package sam
 
 import (
+	"errors"
 	"math"
 	"math/rand"
 	"sort"
@@ -22,20 +23,16 @@ import (
 	hMath "github.com/humilityai/math"
 )
 
+var (
+	ErrBounds = errors.New("index out of bounds")
+)
+
 // SliceFloat64 is the primary data structure for holding numerical
 // data.
 type SliceFloat64 []float64
 
-// MultiplyBy will mutliply all values in the slice
-// by the value provided.
-func (s SliceFloat64) MultiplyBy(x float64) {
-	for i, value := range s {
-		s[i] = value * x
-	}
-}
-
 // Equal ...
-func (s SliceFloat64) Equal(element interface{}) bool {
+func (s SliceFloat64) Equal(element Slice) bool {
 	input, ok := element.(SliceFloat64)
 	if !ok {
 		return false
@@ -52,6 +49,31 @@ func (s SliceFloat64) Equal(element interface{}) bool {
 	}
 
 	return true
+}
+
+// At is just a function version of what can be done
+// more easily with `[index]`.
+func (s SliceFloat64) At(index int) interface{} {
+	return s[index]
+}
+
+// Subslice is just to satisfy the slice interface
+func (s SliceFloat64) Subslice(start, end int) Slice {
+	return SliceFloat64(s[start:end])
+}
+
+// Type will return the type of the values found
+// in this slice.
+func (s SliceFloat64) Type() string {
+	return Float64Type
+}
+
+// MultiplyBy will mutliply all values in the slice
+// by the value provided.
+func (s SliceFloat64) MultiplyBy(x float64) {
+	for i, value := range s {
+		s[i] = value * x
+	}
 }
 
 // Min ...
