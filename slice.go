@@ -1,4 +1,4 @@
-// Copyright 2020 Hummility AI Incorporated, All Rights Reserved.
+// Copyright 2020 Humility AI Incorporated, All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ var (
 
 // Slice is a generic interface that
 // can be used to represent any slice
-// types.
+// type.
 // Current primary use is for external packages.
 type Slice interface {
 	Equal(Slice) bool
