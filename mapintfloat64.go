@@ -37,9 +37,9 @@ func (m MapIntFloat64) Min() (index int) {
 // Max will return the integer key with the
 // largest float64 value.
 func (m MapIntFloat64) Max() (index int) {
-	max := float64(math.MinInt64)
+	max := math.SmallestNonzeroFloat64
 	for i, v := range m {
-		if v < max {
+		if v > max {
 			max = v
 			index = i
 		}
