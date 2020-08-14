@@ -1,2 +1,4 @@
 github.com/humilityai/math v0.0.0-20200801010805-20d6fafa1f83 h1:2ZrZQhHj7i4iQRuIixpuw6XL//Br/VNxTMvxGg6U+mE=
 github.com/humilityai/math v0.0.0-20200801010805-20d6fafa1f83/go.mod h1:vWYPE/7axq/zgxFv3Qp4NIIMnuifH+aEg4u5VFlCxno=
+github.com/humilityai/math v0.0.0-20200803033757-480d44b783d6 h1:sYlXK/dhWAlUVMTBuOKIHOZH8K467aRylYJzsgNxW8U=
+github.com/humilityai/math v0.0.0-20200803033757-480d44b783d6/go.mod h1:vWYPE/7axq/zgxFv3Qp4NIIMnuifH+aEg4u5VFlCxno=
