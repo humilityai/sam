@@ -31,6 +31,13 @@ func (m MapStringInt) Increment(key string) {
 	}
 }
 
+// Contains will return whether or not a key exists
+// in the map.
+func (m MapStringInt) Contains(s string) bool {
+	_, ok := m[s]
+	return ok
+}
+
 // Values will return the slice of all values
 // found in the map.
 func (m MapStringInt) Values() (values SliceInt) {
