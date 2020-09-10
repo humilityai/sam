@@ -23,12 +23,7 @@ type MapStringInt map[string]int
 // Increment will add 1 to the integer value found
 // at the provided key.
 func (m MapStringInt) Increment(key string) {
-	v, ok := m[key]
-	if !ok {
-		m[key] = 1
-	} else {
-		m[key] = v + 1
-	}
+	m[key]++
 }
 
 // Contains will return whether or not a key exists
@@ -53,6 +48,19 @@ func (m MapStringInt) Values() (values SliceInt) {
 func (m MapStringInt) Keys() (keys SliceString) {
 	for k := range m {
 		keys = append(keys, k)
+	}
+
+	return
+}
+
+// KeysAndValues will return two ordered sets of keys and values that are aligned
+// by slice index.
+func (m MapStringInt) KeysAndValues() (keys SliceString, values SliceInt) {
+	keys = make(SliceString, 0, len(m))
+	values = make(SliceInt, 0, len(m))
+	for k, v := range m {
+		keys = append(keys, k)
+		values = append(values, v)
 	}
 
 	return

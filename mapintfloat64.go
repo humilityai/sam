@@ -48,6 +48,19 @@ func (m MapIntFloat64) Max() (index int) {
 	return
 }
 
+// MaxValue will return the largest float64 value
+// in the map.
+func (m MapIntFloat64) MaxValue() float64 {
+	max := math.SmallestNonzeroFloat64
+	for _, v := range m {
+		if v > max {
+			max = v
+		}
+	}
+
+	return max
+}
+
 // MaxN will return a MapIntFloat64 containing the N largest
 // key/value pairs by value.
 func (m MapIntFloat64) MaxN(n int) MapIntFloat64 {
