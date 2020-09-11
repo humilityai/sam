@@ -34,6 +34,20 @@ func (m MapIntFloat64) Min() (index int) {
 	return
 }
 
+// MinValue will return the smallest float64 value
+// in the map.
+func (m MapIntFloat64) MinValue() float64 {
+	min := math.MaxFloat64
+	for _, v := range m {
+		if v < min {
+			min = v
+		}
+	}
+
+	return min
+}
+
+
 // Max will return the integer key with the
 // largest float64 value.
 func (m MapIntFloat64) Max() (index int) {
