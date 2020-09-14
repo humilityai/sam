@@ -179,6 +179,39 @@ func (s SliceFloat64) Max() float64 {
 	return max
 }
 
+// MaxIndex will return the index of the maximum float64 value
+func (s SliceFloat64) MaxIndex() (index int) {
+	if len(s) == 0 {
+		return 0
+	}
+
+	max := math.SmallestNonzeroFloat64
+
+	for i, value := range s {
+		if value > max {
+			max = value
+			index = i
+		}
+	}
+
+	return index
+}
+
+// BoundedSum will return the final index
+// at which the sum of the values is greater
+// than or equal to the given bound.
+func (s SliceFloat64) BoundedSum(bound float64) int {
+	var total float64
+	for i, v := range s {
+		total += v
+		if total >= bound {
+			return i
+		}
+	}
+
+	return len(s) - 1
+}
+
 // MaxN will return a []float64 of the largest-N
 // values in the slice.
 func (s SliceFloat64) MaxN(n int) SliceFloat64 {
