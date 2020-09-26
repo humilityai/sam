@@ -32,7 +32,7 @@ var (
 type SliceFloat64 []float64
 
 // Equal ...
-func (s SliceFloat64) Equal(element Slice) bool {
+func (s SliceFloat64) Equal(element interface{}) bool {
 	input, ok := element.(SliceFloat64)
 	if !ok {
 		return false

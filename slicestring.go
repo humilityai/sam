@@ -45,6 +45,26 @@ func (s SliceString) Equal(input interface{}) bool {
 	return true
 }
 
+func (s SliceString) Type() string {
+	return StringType
+}
+
+func (s SliceString) Get(idx int) interface{} {
+	return s[idx]
+}
+
+func (s SliceString) Set(idx int, value interface{}) {
+	v, ok := value.(string)
+	if !ok {
+		return
+	}
+	s[idx] = v
+}
+
+func (s SliceString) Subslice(start, end int) Slice {
+	return s[start:end]
+}
+
 // Contains will check if the slice contains the supplied
 // string argument.
 func (s SliceString) Contains(input string) bool {

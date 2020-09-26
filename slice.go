@@ -22,6 +22,7 @@ import (
 var (
 	BoolType    = fmt.Sprint(reflect.TypeOf(true))
 	Float64Type = fmt.Sprint(reflect.TypeOf(float64(1)))
+	StringType  = fmt.Sprint(reflect.TypeOf(""))
 )
 
 // Slice is a generic interface that
@@ -29,7 +30,7 @@ var (
 // type.
 // Current primary use is for external packages.
 type Slice interface {
-	Equal(Slice) bool
+	Equal(interface{}) bool
 	Get(int) interface{}
 	Len() int
 	Set(int, interface{})

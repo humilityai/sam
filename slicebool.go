@@ -19,7 +19,7 @@ type SliceBool []bool
 
 // Equal will check if SliceBool is equal to provided
 // object.
-func (s SliceBool) Equal(element Slice) bool {
+func (s SliceBool) Equal(element interface{}) bool {
 	input, ok := element.(SliceBool)
 	if !ok {
 		return false
