@@ -23,6 +23,7 @@ var (
 	BoolType    = fmt.Sprint(reflect.TypeOf(true))
 	Float64Type = fmt.Sprint(reflect.TypeOf(float64(1)))
 	StringType  = fmt.Sprint(reflect.TypeOf(""))
+	Int64Type   = fmt.Sprint(reflect.TypeOf(int64(1)))
 )
 
 // Slice is a generic interface that
